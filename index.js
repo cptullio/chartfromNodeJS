@@ -4,7 +4,7 @@ var chartNode = new ChartjsNode(600, 600);
 
 
 var myChartData =  {
-        labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
+        labels: ["Red", "boi", "Yellow", "Green", "Purple", "Orange"],
         datasets: [{
             label: '# of Votes',
             data: [12, 19, 3, 5, 2, 3],
@@ -28,6 +28,19 @@ var myChartData =  {
         }]
     };
 var myChartOptions =  {
+   plugins: {
+        afterDatasetDraw: function (chart, easing) {
+           var self = chart.config;    /* Configuration object containing type, data, options */
+           var ctx = easing.meta.controller.chart.ctx;  /* Canvas context used to draw with */
+          easing.meta.data.forEach(metaData=> {
+             var myValue = self.data.datasets[metaData._datasetIndex].data[metaData._index] ;
+             ctx.fillText(myValue,  metaData._view.x, metaData._view.y +20 )
+           }); 
+          
+          
+           
+        }
+    },
         scales: {
             yAxes: [{
                 ticks: {
@@ -64,7 +77,7 @@ return chartNode.drawChart(chartJsOptions)
     streamResult.stream // => Stream object
     streamResult.length // => Integer length of stream
     // write to a file
-    return chartNode.writeImageToFile('image/png', './testimage.png');
+    return chartNode.writeImageToFile('image/png', './testimage1.png');
 })
 .then(() => {
    console.log("image Generated")
