@@ -16,6 +16,6 @@ CENTOS 6.5:
 
 sudo yum -y update
 
-sudo yum install cairo cairo-devel cairomm-devel libjpeg-turbo-devel pango pango-devel pangomm pangomm-devel dejavu-lgc-sans-fonts
+sudo yum install cairo cairo-devel cairomm-devel libjpeg-turbo-devel pango pango-devel pangomm pangomm-devel giflib-devel dejavu-lgc-sans-fonts
 
 npm install
